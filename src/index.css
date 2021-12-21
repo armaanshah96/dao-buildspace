@@ -4,8 +4,11 @@ body {
   font-family: Inter, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #7700ee;
-  color: #fff;
+  background-image: url('./assets/StankCollective.png');
+  background-position-x: center;
+  background-position-y: -20vh;
+  background-size:cover;
+  color: #404040;
   overflow-x: hidden;
 }
 #root {
@@ -46,15 +49,24 @@ h1 {
 .connect-wallet,
 .mint-nft,
 .member-page {
+  display: flex;
   flex-direction: column;
-  width: 960px;
+  /* width: 100%; */
   max-width: calc(100% - 1rem);
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   margin: auto;
-  align-content: center;
-  display: flex;
   text-align: center;
+}
+
+.member-page, .unsupported-network {
+  background-color: #e0e0e0e5;
+  border-radius: .5rem;
+  padding: 5em;
+}
+
+th, td {
+  padding: 0 1rem;
 }
 
 .member-page > div {
@@ -67,7 +79,7 @@ h1 {
 .member-page > div > div {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
   gap: 1rem;
 }
 @media screen and (max-width: 768px) {
@@ -93,7 +105,7 @@ h1 {
 
 .member-page form h5 {
   margin-top: 0;
-  color: #7700ee;
+  color: #404040;
 }
 
 .member-page form .card > div {
@@ -108,27 +120,29 @@ h1 {
 
 .card {
   background-color: #fff;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 1rem;
   color: #000;
   box-shadow: 3.1px 6.2px 6.2px hsl(0deg 0% 0% / 0.4);
 }
 
 button {
+  display: flex;
+  align-self: center;
   cursor: pointer;
-  background-color: #000;
-  color: #fff;
-  border: none;
+  background-color: #F39E98;
+  color: #404040;
+  border: 1px solid #404040;
   font-weight: bold;
   font-family: inherit;
-  padding: 1.2rem 2rem;
+  padding: 1rem;
   text-transform: uppercase;
-  border-radius: 3rem;
-  font-size: 1.2rem;
+  border-radius: .5rem;
+  font-size: 1rem;
 }
 
 button:hover {
-  background-color: #121212;
+  background-color: #e0e0e0;
 }
 
 button:focus {
@@ -138,4 +152,77 @@ button:focus {
 button:disabled {
   opacity: 0.8;
   pointer-events: none;
+}
+
+.mint-text {
+  color: #404040;
+  background-image: linear-gradient(#F3C998, #98D2F3, #E198F3);
+  padding: .5rem;
+  border-radius: .5rem;
+  animation: rotation 10s infinite linear;
+}
+
+.glow-on-hover {
+  border: none;
+  outline: none;
+  /* color: #fff;
+  background: #111; */
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+}
+
+.glow-on-hover:before {
+  content: '';
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  position: absolute;
+  top: -2px;
+  left:-2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+}
+
+.glow-on-hover:active {
+  color: #404040;
+}
+
+.glow-on-hover:active:after {
+  background: transparent;
+}
+
+.glow-on-hover:hover:before {
+  opacity: 1;
+}
+
+.glow-on-hover:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #F39E98;
+  opacity: .75;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+@keyframes rotation {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(45deg); }
+  100% { transform: rotate(0deg); }
 }
